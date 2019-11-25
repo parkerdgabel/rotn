@@ -1,21 +1,30 @@
 package main
 
-import (
-	"flag"
-	"log"
-)
+const alphabetLength = 26
 
-func main() {
+type rotn struct {
+	alphabet [alphabetLength]byte
+	n        int
+}
 
-	filePath := flag.String("file", "", "The file to encrypt")
-	n := flag.Int("n", 13, "The number to rotate by for the encryption")
-	flag.Parse()
+func newRotn(n int) *rotn {
+	r := new(rotn)
 
-	switch {
-	case filePath == nil:
-		log.Fatalln("File to encrypt must be specified")
-	case n == nil:
-		log.Fatalln("Number to rotate the encryption by must ne specified")
+	for n < 0 {
+		n += alphabetLength
 	}
 
+	r.n = n % alphabetLength
+
+	for i, c := 0, byte('A'); c <= 'Z'; i, c = i+1, c+1 {
+		r.alphabet[i] = c
+	}
+
+	return r
+}
+
+func (r rotn) rotate(b byte) byte {
+	amt := int(b - 'A')
+	i := (amt + r.n) % alphabetLength
+	return r.alphabet[i]
 }
