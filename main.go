@@ -57,7 +57,7 @@ func main() {
 	output := encrypt(string(file), r)
 
 	wf := fmt.Sprintf("%v.rot%v", *filePath, *n)
-	err = ioutil.WriteFile(wf, []byte(output), 777)
+	err = ioutil.WriteFile(wf, []byte(output), 0664)
 	if err != nil {
 		log.Fatal(err)
 	}
