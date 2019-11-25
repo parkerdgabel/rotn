@@ -1,12 +1,15 @@
 package main
 
+// Constant for the alphabetLength
 const alphabetLength = 26
 
+// Rotn performs a rotation encryption of length n on an Uppercase byte
 type Rotn struct {
 	alphabet [alphabetLength]byte
 	n        int
 }
 
+// NewRotn returns a pointer to a new Rotn with rotation length n
 func NewRotn(n int) *Rotn {
 	r := new(Rotn)
 
@@ -23,6 +26,7 @@ func NewRotn(n int) *Rotn {
 	return r
 }
 
+// rotate returns the rotated value of the byte by n
 func (r Rotn) rotate(b byte) byte {
 	amt := int(b - 'A')
 	i := (amt + r.n) % alphabetLength

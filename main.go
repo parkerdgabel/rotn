@@ -10,10 +10,12 @@ import (
 	"unicode"
 )
 
+// isWhitespaceOrPunctOrDigit checks if a rune is a whitespace, a puntuation, or a digit
 func isWhitespaceOrPunctOrDigit(r rune) bool {
 	return unicode.IsPunct(r) || unicode.IsSpace(r) || unicode.IsDigit(r)
 }
 
+// encrypt performs the rotation encryption
 func encrypt(fc string, r *Rotn) string {
 	var b strings.Builder
 	for _, c := range fc {
@@ -33,6 +35,7 @@ func encrypt(fc string, r *Rotn) string {
 	return b.String()
 }
 
+// Main routine for the program
 func main() {
 
 	filePath := flag.String("file", "", "The file to encrypt")
