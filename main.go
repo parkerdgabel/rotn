@@ -40,7 +40,7 @@ func main() {
 	flag.Parse()
 
 	switch {
-	case len(os.Args) < 3:
+	case len(os.Args) < 2:
 		flag.PrintDefaults()
 		os.Exit(1)
 	case *filePath == "":
