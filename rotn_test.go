@@ -6,7 +6,7 @@ import (
 
 func TestValidRotation(t *testing.T) {
 
-	r := newRotn(1)
+	r := NewRotn(1)
 	actual := r.rotate('A')
 	expected := byte('B')
 	if actual != expected {
@@ -21,7 +21,7 @@ func TestValidRotation(t *testing.T) {
 }
 
 func TestNegativeN(t *testing.T) {
-	r := newRotn(-1)
+	r := NewRotn(-1)
 
 	actual := r.rotate('A')
 	expected := byte('Z')
@@ -37,7 +37,7 @@ func TestNegativeN(t *testing.T) {
 }
 
 func TestSymmetry(t *testing.T) {
-	r := newRotn(13)
+	r := NewRotn(13)
 
 	actual := r.rotate('A')
 	actual = r.rotate(actual)

@@ -2,13 +2,13 @@ package main
 
 const alphabetLength = 26
 
-type rotn struct {
+type Rotn struct {
 	alphabet [alphabetLength]byte
 	n        int
 }
 
-func newRotn(n int) *rotn {
-	r := new(rotn)
+func NewRotn(n int) *Rotn {
+	r := new(Rotn)
 
 	for n < 0 {
 		n += alphabetLength
@@ -23,7 +23,7 @@ func newRotn(n int) *rotn {
 	return r
 }
 
-func (r rotn) rotate(b byte) byte {
+func (r Rotn) rotate(b byte) byte {
 	amt := int(b - 'A')
 	i := (amt + r.n) % alphabetLength
 	return r.alphabet[i]
