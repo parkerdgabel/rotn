@@ -38,10 +38,12 @@ func encrypt(fc string, r *Rotn) string {
 // Main routine for the program
 func main() {
 
+	// Set the flags for the application
 	filePath := flag.String("file", "", "The file to encrypt")
-	n := flag.Int("n", 13, "The number to rotate by for the encryption, defaults to 13 if not specified")
+	n := flag.Int("n", 13, "The number to rotate by for the encryption")
 	flag.Parse()
 
+	// Check for input mistakes
 	switch {
 	case len(os.Args) < 2:
 		flag.PrintDefaults()
@@ -50,6 +52,7 @@ func main() {
 		log.Fatalln("File to encrypt must be specified")
 	}
 
+	// Read all of the input file
 	file, err := ioutil.ReadFile(*filePath)
 	if err != nil {
 		log.Fatal(err)
@@ -57,8 +60,10 @@ func main() {
 
 	r := NewRotn(*n)
 
+	// output is a string with the contents of the input file rotated
 	output := encrypt(string(file), r)
 
+	// format the name of the output file then write output to it
 	wf := fmt.Sprintf("%v.rot%v", *filePath, *n)
 	err = ioutil.WriteFile(wf, []byte(output), 0664)
 	if err != nil {
