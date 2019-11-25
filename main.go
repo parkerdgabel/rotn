@@ -10,6 +10,11 @@ import (
 	"unicode"
 )
 
+// This package implements the rotn encryption algorithm.
+// By Parker Gabel
+// Google doc link for the Language study: https://docs.google.com/document/d/1YMibnTtNde5y9NuGQJRrd46I39MBxkgT8CCKjW3nHmo/edit?usp=sharing
+// Instructions: Use go install to install the program on your $GOPATH then type rotn for usage details.
+
 // isWhitespaceOrPunctOrDigit checks if a rune is a whitespace, a puntuation, or a digit
 func isWhitespaceOrPunctOrDigit(r rune) bool {
 	return unicode.IsPunct(r) || unicode.IsSpace(r) || unicode.IsDigit(r)
